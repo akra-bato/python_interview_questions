@@ -99,11 +99,11 @@ def paste_after(delimiter, content, text):
 
 
 if __name__ == '__main__':
-    with open('questions.md') as fp:
+    with open('questions.md', encoding="utf-8") as fp:
         maker = TOCMaker(link_prefix='questions.md/')
         toc = maker.make_from_file(fp)
 
-    with open('README.md', 'r') as fp:
+    with open('README.md', 'r', encoding="utf-8") as fp:
         original = fp.read()
         changed = paste_after('<!-- toc -->', toc, original)
 
@@ -112,7 +112,7 @@ if __name__ == '__main__':
             print('Error')
             sys.exit(1)
     else:
-        with open('README.md', 'w') as fp:
+        with open('README.md', 'w', encoding="utf-8") as fp:
             fp.write(changed)
 
     print('Done')
